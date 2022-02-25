@@ -4,38 +4,52 @@
 # O final da digitação de dados deve ser dada quando o usuário digitar 0 (zero) no campo código. 
 # Ao encerrar o programa também deve ser informados os códigos e valores do clente mais alto, 
 # do mais baixo, do mais gordo e do mais magro, além da média das alturas e dos pesos dos clientes 
-code = []
+cod_alto = 0
+cod_baixo = 0
+
+cod_gordo = 0
+cod_magro = 0
+
 altura = []
+maior_altura = 1.20
+menor_altura = 2.70
+
 peso = []
+mais_gordo = 20
+mais_magro = 1000
 
-pessoas = {}
+cod = 1
 
-cod_mais_alto = 0
-codigo = 1
-cont = 0
-
-print('Informe 0 para parar o registro\n')
-
-while codigo == 1:
-    cod = int(input('\nCódigo: '))
+while True:
+    cod = int(input('\nInforme o código: '))
     if cod == 0:
         break
+    else:
+        at = float(input('Altura: '))
+        altura.append(at)
 
-    at = float(input('Altura: '))
-    ps = float(input('Paso: '))
+        ps = float(input('Peso: '))
+        peso.append(ps)
 
-    code.append(cod)
-    altura.append(at)
-    peso.append(ps)
-    cont += 1
-    pessoas[cod] = [at, ps]
+        if at > maior_altura:
+            maior_altura = at
+            cod_alto = cod
+        if at < menor_altura:
+            menor_altura = at
+            cod_baixo = cod
 
-media_altura = sum(altura) / cont
-media_peso = sum(peso) / cont
-print(f'Maior altura: {max(altura)}' +
-    f'\nMenor altura: {min(altura)}' +
-    f'\nMaior peso: {max(peso)}' +
-    f'\nMenor peso: {min(peso)}' +
-    f'\nMedia altura: {media_altura}' +
-    f'\nMedia peso: {media_peso}')
-# ATUALIZAR
+        if ps > mais_gordo:
+            mais_gordo = ps
+            cod_gordo = cod
+        if ps < mais_magro:
+            mais_magro = ps
+            cod_magro = cod
+
+print(f'\nMaior altura: {maior_altura} ----- cod {cod_alto}' +
+    f'\nMenor altura: {menor_altura} ----- cod {cod_baixo}' +
+    f'\nMais gordo: {mais_gordo} ----- cod {cod_gordo}' +
+    f'\nMais magro: {mais_magro} ----- cod {cod_magro}' +
+    f'\nMédia altura: {sum(altura) / len(altura)}' +
+    f'\nMédia peso: {sum(peso) / len(peso)}')
+
+# Há outras formas masi faceis de fazer esse exercicio, mas quis fazer desta forma
