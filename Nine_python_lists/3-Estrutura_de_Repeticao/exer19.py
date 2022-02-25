@@ -7,7 +7,7 @@ for i in range(1, n + 1):
     val = int(input('Informe um valor: '))
 
     while val > 1000 or val < 0:
-        val = int(input('Informe o valor outra vex: '))
+        val = int(input('Informe o valor outra vez: '))
     
     x.append(val)
 
