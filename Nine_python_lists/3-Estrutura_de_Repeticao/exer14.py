@@ -2,7 +2,6 @@
 # quantidade de números pares e a quantidade de números impares. 
 from re import I
 
-
 par = 0
 impar = 0
 
