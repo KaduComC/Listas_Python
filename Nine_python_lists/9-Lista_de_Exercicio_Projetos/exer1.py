@@ -34,19 +34,10 @@
 # chamada pelo programa principal. O cálculo do percentual de uso também deverá ser feito 
 # através de uma função, que será chamada pelo programa principal.
 
+# Recursos adicionais: opcionalmente, desenvolva as seguintes funcionalidades:
 
-# nome_dados = {'alexandre': 456123789, 'anderson': 1245698456, 'antonio': 123456456, 'carlos': 91257581, 'cesar': 987458, 'rosemary': 789456125}
+# Ordenar os usuários pelo percentual de espaço ocupado;
+# Mostrar apenas os n primeiros em uso, definido pelo usuário;
 
-# with open('7-Exercicios_Arquivos/usuarios.txt', 'w') as usuarios:
-#     for key, value in nome_dados.items():
-#         usuarios.write('%s        %s\n' % (key, value))
-
-with open('7-Exercicios_Arquivos/usuarios.txt', 'r') as usuarios:
-    for value in usuarios:
-        print(usuarios.readline(value))
-
-# def conversao():
-#     pass
-
-# def percentual():
-#     pass
+# Gerar a saída numa página html;
+# Criar o programa que lê as pastas e gera o arquivo inicial;
