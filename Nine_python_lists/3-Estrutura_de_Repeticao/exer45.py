@@ -19,3 +19,42 @@
 #     10 - A
 #     Após concluir isto você poderia incrementar o programa permitindo que o professor 
 # digite o gabarito da prova antes dos alunos usarem o programa. 
+print('Informe as respostas da prova\n\n')
+continuar = True
+nota = 0
+
+while continuar == True:
+    for i in range(1, 10 + 1):
+        qt = str(input(f'Resposta da questão 0{i}: ')).lower()
+        
+        if i == 1:
+            if qt == 'a': nota += 1
+        
+        if i == 2:
+            if qt == 'b': nota += 1
+
+        if i == 3:
+            if qt == 'c': nota += 1
+        
+        if i == 4:
+            if qt == 'd': nota += 1
+        
+        if i == 5:
+            if qt == 'e': nota += 1
+        
+        if i == 6:
+            if qt == 'e': nota += 1
+
+        if i == 7:
+            if qt == 'd': nota += 1
+
+        if i == 8:
+            if qt == 'c': nota += 1
+
+        if i == 9:
+            if qt == 'b': nota += 1
+
+        if i == 10:
+            if qt == 'a': nota += 1
+
+            
