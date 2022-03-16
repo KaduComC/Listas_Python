@@ -22,7 +22,8 @@ def tentativa():
 def random_word():
     arquivo_jogo = open('6-Exercicios_com_Strings/palavras.txt', 'r')
     words = arquivo_jogo.read()
-    word = list(map(str, words.split()))
+    word = list(map(str, words.split())) #faz uma lista e colaca as palavras dentro dela usaando 
+    # o map que passa str e .split como argumentos
     return random.choice(word)
 
 def embaralhada(palavra):
