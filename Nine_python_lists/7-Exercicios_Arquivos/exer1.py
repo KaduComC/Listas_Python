@@ -46,12 +46,12 @@ for i in ipsl:
     valida_ip(i)
 
 def separa_ips():
-    print('[Endereços válidos:]')
+    print('Endereços válidos:')
     arquivo_novo = open('7-Exercicios_Arquivos/ip_validos.txt', 'r')
     vl = arquivo_novo.read()
     print(vl)
 
-    print('\n[Endereços inválidos:]')
+    print('\nEndereços inválidos:')
     arquivo_novo = open('7-Exercicios_Arquivos/ip_invalidos.txt', 'r')
     il = arquivo_novo.read()
     print(il)
