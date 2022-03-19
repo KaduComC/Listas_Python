@@ -5,3 +5,4 @@
 # (alimentar todos os bichinhos, brincar com todos os bichinhos, ou ouvir a todos os bichinhos). 
 # Para tornar o programa mais interessante, dê para cada bichinho um nivel inicial aleatório de 
 # fome e tédio.
+

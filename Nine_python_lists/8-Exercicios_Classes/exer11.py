@@ -11,3 +11,8 @@
 # meuFusca.adicionarGasolina(20); # abastece com 20 litros de combustível. 
 # meuFusca.andar(100);            # anda 100 quilômetros.
 # meuFusca.obterGasolina()        # Imprime o combustível que resta no tanque.
+class Carro:
+    def __init__(self, tanque):
+        self.tanque = tanque
+    
+    

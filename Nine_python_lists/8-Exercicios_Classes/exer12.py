@@ -5,3 +5,7 @@
 # poupança com um saldo inicial de R$1000,00 e uma taxa de juros de 10%. Depois aplique o método 
 # adicioneJuros() cinco vezes e imprime o saldo resultante.
 
+class Conta_investimento:
+    def __init__(self, saldo, taxa_juros):
+        self.saldo = saldo
+        self.taxa_juros = taxa_juros
