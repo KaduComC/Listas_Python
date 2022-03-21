@@ -4,31 +4,63 @@
 # com valor default zero e os demais atributos são obrigatórios.
 class Conta_corrente:
     def __init__(self, numero_conta, nome, saldo = 0):
-        self.numero_conta = numero_conta
-        self.nome = nome
-        self.saldo = saldo
+        self._numero_conta = numero_conta
+        self._nome = nome
+        self._saldo = saldo
 
-    def alterar_nome(self, novo_nome):
-        self.nome = novo_nome
-        return self.nome
-
-    def deposita(self, valor_dep):
-        if self.saldo == 0: 
-            self.saldo = valor_dep
-            return self.saldo
-        else: 
-            self.saldo ++ valor_dep
-            return self.saldo
+    def troca_nome(self):
+        print('\n==============')
+        print(f'Atual nome: {self._nome}')
         
-    def saca(self, valor_sac):
-        if self.saldo <= 0:
-            ValueError("Saldo zerado")
-        else:
-            self.saldo -= valor_sac
-            return self.saldo
-    
-cc = Conta_corrente(1, 'Kadu')
+        novo_nome = str(input('informe o novo nome: '))
+        self._nome = novo_nome
+        print(f'Nome alterado para: {self._nome}')
 
-print(cc.alterar_nome('Cadu'))
-print(cc.deposita(800))
-print(cc.saca(500))
+    def deposita(self):
+        print('\n==============')
+        valor = float(input('Valor a ser depositado: '))
+
+        if valor > 0 and valor <= 5000:
+            self._saldo += valor
+            print(f'\nConta: {self._numero_conta}\nSaldo: {self._saldo:.2f}')
+        else:
+            print("Valos para deposito tem que ser menor ou igual a R$ 5000.00")
+
+    def saca(self):
+        print('\n==============')
+        print(f'Saldo: {self._saldo:.2f}')
+
+        valor = float(input('Valor a ser sacado: '))
+
+        if self._saldo > 0 and self._saldo > valor:
+            self._saldo -= valor
+            print(f'\nConta: {self._numero_conta}\nSaldo: {self._saldo:.2f}')
+        else:
+            print(f"Saldo insuficiente\nSaldo: {self._saldo}")
+
+    def mostra_saldo(self):
+        print('\n==============')
+        print(f'Conta: {self._numero_conta}\nSaldo: {self._saldo:.2f}')
+
+def menu():
+    ct1 = Conta_corrente(123, 'Cadu')  
+
+    while True:
+        op = int(input('\n\nMENU BANK\n==============\n'+
+                '1 - Saldo\n2 - Depositar\n3 - Sacar\n4 - Trocar nome\n5 - Sair'+
+                '\nInforme a opção: '))
+        
+        if op == 1:
+            ct1.mostra_saldo()
+        elif op == 2:
+            ct1.deposita()
+        elif op == 3:
+            ct1.saca()
+        elif op == 4:
+            ct1.troca_nome()
+        elif op == 5:
+            break
+        else:
+            print('opção inválida')
+
+menu()

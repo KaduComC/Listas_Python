@@ -34,19 +34,47 @@
 # chamada pelo programa principal. O cálculo do percentual de uso também deverá ser feito 
 # através de uma função, que será chamada pelo programa principal.
 
+def conversao(dados):
+    dados_ind = dados / (1024 * 1024)
+    return round(dados_ind, 2)
 
-# nome_dados = {'alexandre': 456123789, 'anderson': 1245698456, 'antonio': 123456456, 'carlos': 91257581, 'cesar': 987458, 'rosemary': 789456125}
-
-# with open('7-Exercicios_Arquivos/usuarios.txt', 'w') as usuarios:
-#     for key, value in nome_dados.items():
-#         usuarios.write('%s        %s\n' % (key, value))
+def conversao_total(total):
+    total_mega = total / (1024 * 1024)
+    return total_mega
 
 with open('7-Exercicios_Arquivos/usuarios.txt', 'r') as usuarios:
-    for value in usuarios:
-        print(usuarios.readline(value))
+    linhas = usuarios.readlines()
 
-# def conversao():
-#     pass
+usuario = []
+dados_bytes = []
+dados_megas = []
+porcentagem = []
 
-# def percentual():
-#     pass
+for i in linhas:
+    l = i.split()
+    usuario.append(l[0])
+    dados_bytes.append(int(l[1]))
+
+bytes = sum(dados_bytes)
+total = conversao_total(bytes)
+
+for i in dados_bytes: 
+    dados_megas.append(conversao(i))
+
+for i in dados_megas: 
+    porcentagem.append((i / total) * 100)
+
+with open('7-Exercicios_Arquivos/relátorio.txt', 'w') as relatorio:
+    relatorio.write('ACME Inc.          Uso do espaço em disco pelos usuários')
+    relatorio.write('\n-------------------------------------------------------------')
+    relatorio.write('\nNr.  Usuário        Espaço utilizado     % do uso\n')
+    
+    for i in range(len(dados_bytes)):
+        relatorio.write(f'\n{i + 1:<5}{usuario[i]:<15}{dados_megas[i]:<8} MB          {porcentagem[i]:.2f}%')
+                            # 1         alexandre       434,99 MB             16,85%
+
+    relatorio.write(f'\n\nEspaço total ocupado: {conversao_total(bytes):.2f} MB')
+    relatorio.write(f'\nEspaço médio ocupado: {(total / len(dados_bytes)):.2f} MB')
+
+with open('7-Exercicios_Arquivos/relátorio.txt', 'r') as rel:
+    print(rel.read())

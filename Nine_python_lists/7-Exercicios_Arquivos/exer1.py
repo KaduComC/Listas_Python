@@ -28,32 +28,30 @@ def valida_re():
 
 def valida_ip(ip):
     if(re.search(valida_re(), ip)):
-        arquivo_novo = open('7-Exercicios_Arquivos/ip_validos.txt', 'a')
-        arquivo_novo.writelines(ip)
-        arquivo_novo.writelines('\n')
-        arquivo_novo.close()
+        with open('7-Exercicios_Arquivos/ip_validos.txt', 'a') as arquivo_novo:
+            arquivo_novo.writelines(ip)
+            arquivo_novo.writelines('\n')
     else:
-        arquivo_novo = open('7-Exercicios_Arquivos/ip_invalidos.txt', 'a')
-        arquivo_novo.writelines(ip)
-        arquivo_novo.writelines('\n')
-        arquivo_novo.close()
+        with open('7-Exercicios_Arquivos/ip_invalidos.txt', 'a') as arquivo_novo:
+            arquivo_novo.writelines(ip)
+            arquivo_novo.writelines('\n')
 
-arquivo = open('7-Exercicios_Arquivos/ips.txt', 'r')
-ips = arquivo.readline()
-ipsl = list(map(str, ips.split()))
+with open('7-Exercicios_Arquivos/ips.txt', 'r') as arquivo:
+    ips = arquivo.readline()
+    ipsl = list(map(str, ips.split()))
 
 for i in ipsl:
     valida_ip(i)
 
 def separa_ips():
     print('Endereços válidos:')
-    arquivo_novo = open('7-Exercicios_Arquivos/ip_validos.txt', 'r')
-    vl = arquivo_novo.read()
-    print(vl)
+    with open('7-Exercicios_Arquivos/ip_validos.txt', 'r') as arquivo_novo:
+        vl = arquivo_novo.read()
+        print(vl)
 
     print('\nEndereços inválidos:')
-    arquivo_novo = open('7-Exercicios_Arquivos/ip_invalidos.txt', 'r')
-    il = arquivo_novo.read()
-    print(il)
+    with open('7-Exercicios_Arquivos/ip_invalidos.txt', 'r') as arquivo_novo:
+        il = arquivo_novo.read()
+        print(il)
 
 separa_ips()

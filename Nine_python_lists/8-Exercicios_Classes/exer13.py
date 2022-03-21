@@ -7,9 +7,13 @@ class Funcionario:
         self.nome = nome
         self.salario = salario
 
-    def mostra(self):
-        return print(f'Nome: {self.nome}\nSalário: {self.salario}')
+    def mostra_nome(self):
+        return print(f'Nome: {self.nome}')
+        
+    def mostra_salario(self):
+        return print(f'Salário: {self.salario:.2f}')
 
-func = Funcionario('Cadu', 1000.0)
+func = Funcionario('Cadu', 1000.00)
 
-func.mostra()
+func.mostra_nome()
+func.mostra_salario()
