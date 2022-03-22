@@ -15,4 +15,18 @@ class Carro:
     def __init__(self, tanque):
         self.tanque = tanque
     
-    
+    def add_gasolina(self, gasolina):
+        self.tanque += gasolina
+
+    def obterGasolina(self):
+        print(f'Gasolina: {self.tanque}')
+
+    def andar(self, km):
+        consumo = km / self.tanque
+        self.tanque -= consumo
+
+meuFusca = Carro(15)
+meuFusca.add_gasolina(20)
+meuFusca.obterGasolina()
+meuFusca.andar(100)
+meuFusca.obterGasolina()
