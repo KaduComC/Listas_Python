@@ -4,14 +4,17 @@
 
 from random import randrange as rd
 class Bichinho_virtual:
-    def __init__(self, nome = 'Tamagushi', fome = rd(50, 100), saude = rd(50, 100), idade = 1):
+    valor = 11
+
+    def __init__(self, nome = 'Tamagushi', fome = rd(10, 31), saude = rd(10, 31), idade = 1, humor = 0):
         self._nome = nome
         self._fome = fome
         self._saude = saude
         self._idade = idade
+        self._humor = humor
 
     def altera_nome(self):
-        print(f'atual nome do seu Tamagushi é: {self._nome}')
+        print(f'\nO atual nome do seu Tamagushi é: {self._nome}')
 
         op = str(input('Deseja alterar o nome?[S/n]\nResponda: ')).lower()
 
@@ -23,31 +26,53 @@ class Bichinho_virtual:
         else:
             print('opção inválida')
 
-    # def altera_fome(self):
-    #     print(f'Fome: {self._fome}')
-        
-    def humor(self):
-        if self._fome > 10 and self._saude > 10:
-            if self._saude > 60 and self._fome > 60:
-                print('Estou muito bem')
-            elif self._saude < 60 and self._saude >= 40 and self._fome < 60 and self._fome >= 40:
-                print('Estou ficando ruim')
-            elif self._saude < 40 and self._fome < 40:
-                print('Estou muito ruim')
+    def altera_fome(self):
+        old = self._fome - self.valor
+        comida = int(input('Informe a quantidade de comida: '))
+        if comida > 0 and comida <= 25:
+            self._fome = old + comida
+            print(f'\n{self._nome} foi alimentado: {old} >>> {self._fome}')
         else:
-            print(f'{self._nome} morreu')
+            print('Quantidade de comida deve ser entre 1 e 25')
+
+    def humor(self):
+        self._humor = self._fome * self._saude
+        print(f'Humor: {self._humor}')
     
     def altera_saude(self):
-        pass
+        old = self._saude - self.valor
+        self._saude = old + 5
+        if self._saude > 100:
+            self._saude = 100
+            print(f'\n{self._nome} foi medicado: {old} >>> {self._saude}')
+        else:
+            print(f'\n{self._nome} foi medicado: {old} >>> {self._saude}')
 
     def altera_idade(self):
         self._idade += 1
 
-    def __str__(self):
-        return f'{self._saude}\n{self._fome}'
-    
 b = Bichinho_virtual()
-b.altera_nome()
-b.altera_idade()
-b.humor()
-print(b)
+
+while True:
+    op = int(input('\n>>> TAMAGUSHI <<<'+
+        '\n=================='+
+        '\n1 - Alterar nome'+
+        '\n2 - Dar comida'+
+        '\n3 - Dar medicamento'+
+        '\n4 - Humor'+
+        '\n5 - Sair\nResponda: '))
+
+    if op == 1:
+        b.altera_nome()
+    elif op == 2:
+        b.altera_fome()
+    elif op == 3: 
+        b.altera_saude()
+    elif op == 4:
+        b.humor()
+    elif op == 5:
+        break
+    else:
+        print('Opção inválida')
+
+    b.altera_idade()
